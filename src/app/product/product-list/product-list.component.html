@@ -1,1 +1,19 @@
-<p>product-list works!</p>
+<h2>Danh sách sản phẩm</h2>
+<a routerLink="/product/create">Tạo mới sản phẩm</a>
+<table>
+  <tr>
+    <td>STT</td>
+    <td>Tên sản phẩm</td>
+    <td>giá sản phẩm</td>
+    <td>Mô tả</td>
+    <td colspan="2"></td>
+  </tr>
+  <tr *ngFor="let product of products; index as i">
+    <td>{{i +1}}</td>
+    <td>{{product.name}}</td>
+    <td>{{product.price}}</td>
+    <td>{{product.description}}</td>
+    <td><a [routerLink]="['/product/edit',product.id]">Edit</a> </td>
+    <td><a [routerLink]="['/product/delete',product.id]">Delete</a> </td>
+  </tr>
+</table>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+// noinspection AngularMissingOrInvalidDeclarationInModule
 @Component({
   selector: 'app-product-create',
   templateUrl: './product-create.component.html',

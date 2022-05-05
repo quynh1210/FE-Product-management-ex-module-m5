@@ -9,20 +9,19 @@ import {FormControl, FormGroup} from '@angular/forms';
   styleUrls: ['./product-edit.component.css']
 })
 export class ProductEditComponent implements OnInit {
-  productForm?: FormGroup;
-  id?: number;
+  productForm: FormGroup | undefined;
+  id: number | undefined;
 
   constructor(private productService: ProductService,
               private activatedRoute: ActivatedRoute) {
     this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
-      // @ts-ignore
       this.id = +paramMap.get('id');
       const product = this.getProduct(this.id);
       this.productForm = new FormGroup({
-        id: new FormControl(product?.id),
-        name: new FormControl(product?.name),
-        price: new FormControl(product?.price),
-        description: new FormControl(product?.description),
+        id: new FormControl(product.id),
+        name: new FormControl(product.name),
+        price: new FormControl(product.price),
+        description: new FormControl(product.description),
       });
     });
   }
@@ -35,7 +34,7 @@ export class ProductEditComponent implements OnInit {
   }
 
   updateProduct(id: number) {
-    const product = this.productForm?.value;
+    const product = this.productForm.value;
     this.productService.updateProduct(id, product);
     alert('Cập nhật thành công');
   }

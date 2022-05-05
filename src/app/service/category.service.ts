@@ -1,5 +1,5 @@
-import {Injectable} from '@angular/core';
-import {Category} from "../model/category";
+import { Injectable } from '@angular/core';
+import {Category} from '../model/category';
 
 @Injectable({
   providedIn: 'root'
@@ -7,13 +7,13 @@ import {Category} from "../model/category";
 export class CategoryService {
   categories: Category[] = [{
     id: 1,
-    name: 'flower'
+    name: 'IPhone'
   }, {
     id: 2,
-    name: 'cake'
+    name: 'Samsung',
   }, {
     id: 3,
-    name: 'tea'
+    name: 'LG',
   }];
 
   constructor() {
@@ -23,8 +23,8 @@ export class CategoryService {
     return this.categories;
   }
 
-  saveCategory(category: Category) {
-    return this.categories.push(category);
+  saveCategory(category) {
+    this.categories.push(category);
   }
 
   findById(id: number) {
@@ -37,5 +37,11 @@ export class CategoryService {
         this.categories[i] = category;
       }
     }
+  }
+
+  deleteCategory(id: number) {
+    this.categories = this.categories.filter(category => {
+      return category.id !== id;
+    });
   }
 }

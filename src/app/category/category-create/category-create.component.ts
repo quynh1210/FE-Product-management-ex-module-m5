@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {FormControl, FormGroup} from '@angular/forms';
+import {CategoryService} from '../../service/category.service';
 
 @Component({
   selector: 'app-category-create',
@@ -6,10 +8,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./category-create.component.css']
 })
 export class CategoryCreateComponent implements OnInit {
+  categoryForm: FormGroup = new FormGroup({
+    id: new FormControl(),
+    name: new FormControl(),
+  });
 
-  constructor() { }
+  constructor(private categoryService: CategoryService) {
+  }
 
-  ngOnInit(): void {
+  ngOnInit() {
+  }
+
+  submit() {
+    const category = this.categoryForm.value;
+    this.categoryService.saveCategory(category);
+    this.categoryForm.reset();
   }
 
 }

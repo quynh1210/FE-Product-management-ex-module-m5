@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Product} from "../model/product";
+import {Product} from '../model/product';
 
 @Injectable({
   providedIn: 'root'
@@ -7,29 +7,29 @@ import {Product} from "../model/product";
 export class ProductService {
   products: Product[] = [{
     id: 1,
-    name: 'Rose',
-    price: 2333,
-    description: 'very beautiful'
+    name: 'rose',
+    price: 2400000,
+    description: 'beautiful'
   }, {
     id: 2,
-    name: 'Pudding',
-    price: 4523,
+    name: 'socola',
+    price: 230,
     description: 'delicious'
   }, {
     id: 3,
-    name: 'ShanXue',
-    price: 1000,
-    description: 'expensive'
+    name: 'shanxue',
+    price: 3456,
+    description: 'so sweet'
   }, {
-    id: 1,
-    name: 'Baby',
-    price: 1242,
-    description: 'very cute'
+    id: 4,
+    name: 'baby doll',
+    price: 7342,
+    description: 'new'
   }, {
-    id: 2,
-    name: 'cream',
-    price: 123,
-    description: 'very soft and smooth'
+    id: 5,
+    name: 'cake cacao',
+    price: 1895,
+    description: 'little bit'
   }];
 
   constructor() {
@@ -40,7 +40,7 @@ export class ProductService {
   }
 
   saveProduct(product: Product) {
-    return this.products.push(product);
+    this.products.push(product);
   }
 
   findById(id: number) {
@@ -53,5 +53,11 @@ export class ProductService {
         this.products[i] = product;
       }
     }
+  }
+
+  deleteProduct(id: number) {
+    this.products = this.products.filter(product => {
+      return product.id !== id;
+    });
   }
 }
